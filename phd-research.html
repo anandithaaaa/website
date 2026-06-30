@@ -9,7 +9,7 @@
     .phd-hero {
       flex-shrink: 0;
       text-align: center;
-      padding: 28px 100px 18px;
+      padding: 64px 100px 18px;
     }
     .phd-hero h1 {
       font-size: clamp(1.35rem, 2.3vw, 2.2rem);
@@ -43,10 +43,9 @@
       align-items: stretch;
     }
 
-    /* Landscape card: wider than tall, image on top */
+    /* Card: fixed width, image on top, text fully shown below */
     .research-card-full {
       flex: 0 0 340px;          /* fixed width */
-      height: 320px;            /* fixed height — width > height */
       background: #FFF8EE;
       border-radius: 6px;
       overflow: hidden;
@@ -60,10 +59,11 @@
       text-decoration: underline;
     }
 
-    /* Image fills top ~58% */
+    /* Fixed-height image on top */
     .card-image {
-      flex: 0 0 58%;
+      height: 170px;
       width: 100%;
+      flex-shrink: 0;
       overflow: hidden;
     }
 
@@ -87,29 +87,27 @@
       font-family: var(--font);
     }
 
-    /* Text fills bottom ~42% */
+    /* Text area — grows to fit content, never clipped */
     .card-body {
       flex: 1;
-      padding: 12px 16px;
+      padding: 14px 16px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      overflow: hidden;
+      gap: 8px;
     }
 
     .card-title {
       font-size: 1.05rem;
       font-weight: 500;
-      line-height: 1.35;
+      line-height: 1.3;
       color: var(--text);
     }
 
     .card-desc {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 300;
       line-height: 1.5;
       color: var(--text);
-      overflow: hidden;
     }
 
     .card-desc a {
@@ -143,17 +141,29 @@
     .carousel-btn.next { right: 12px; }
     .carousel-btn:disabled { opacity: 0.2; cursor: default; }
 
-    /* Wave at bottom */
+    /* Dotted wavy divider at bottom (matches original Squarespace "wavy" divider) */
     .wave-divider {
       flex-shrink: 0;
       overflow: hidden;
       line-height: 0;
-      height: 36px;
+      height: 72px;
     }
     .wave-divider svg {
       display: block;
       width: 100%;
       height: 100%;
+    }
+    .wave-divider .wave-fill {
+      fill: var(--bg);          /* cream band below the wave */
+      stroke: none;
+    }
+    .wave-divider .wave-line {
+      fill: none;
+      stroke: var(--text);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 1 20;
+      vector-effect: non-scaling-stroke;
     }
   </style>
 </head>
@@ -182,18 +192,73 @@
 
           <div class="research-card-full">
             <div class="card-image">
-              <img src="images/mobile_phone.png" alt="Mobile phone use in Tanzania"
+              <img src="images/afib.png" alt="Atrial fibrillation ECG"
                    onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
             </div>
             <div class="card-body">
-              <div class="card-title">Understanding Mobile Phone Use in Rural Tanzania</div>
-              <p class="card-desc">Surveyed 1,014 households in rural Tanzania to understand smartphone and feature phone adoption, use, and comfort in rural communities. CHI '24 publication <a href="#" target="_blank">here</a> in collaboration with Cornell Economics &amp; IRDP.</p>
+              <div class="card-title">Building AI Models for Health Worker Led Atrial Fibrillation Screening in Rural Nepal</div>
+              <p class="card-desc">Created an AI model that CHWs can use to screen whether atrial fibrillation has happened or will happen to a patient in a given 60-day window using ECGs from a low cost, portable device. CVDHJ paper <a href="#" target="_blank">here</a> in collaboration with AliveCor and UW Medicine.</p>
             </div>
           </div>
 
           <div class="research-card-full">
             <div class="card-image">
-              <img src="images/ekichabi.png" alt="eKichabi v2"
+              <img src="images/chatbot.png" alt="Aerial view of urban India"
+                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
+            </div>
+            <div class="card-body">
+              <div class="card-title">Nudging Uptake of Clinically Valid LLM Chatbots in Urban India</div>
+              <p class="card-desc">Quantified patients' treatment expectations where local practices deviate from clinically validated guidelines, then designed LLM-enabled bots to shift preferences towards safe practices. JMIR submission <a href="#" target="_blank">here</a> in collaboration with MSR India and Everwell.</p>
+            </div>
+          </div>
+
+          <div class="research-card-full">
+            <div class="card-image">
+              <img src="images/nepal.png" alt="Mountains in Nepal"
+                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
+            </div>
+            <div class="card-body">
+              <div class="card-title">Juxtaposing the Imaginaries &amp; Realities of Integrating AI tools in Nepal</div>
+              <p class="card-desc">Collected health leaders' imagined futures of diagnostic AI tools and juxtaposing them with the realities of creating and maintaining the tools within the extant health system. CSCW submission here in collaboration with UW Global Health.</p>
+            </div>
+          </div>
+
+          <div class="research-card-full">
+            <div class="card-image">
+              <img src="images/llm.png" alt="Vehicles parked in India"
+                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
+            </div>
+            <div class="card-body">
+              <div class="card-title">Measuring the Performance of LLMs on Indic Language Postoperative Queries</div>
+              <p class="card-desc">Interrogated 20 LLMs' ability to respond to queries from Indic language speakers, paying particular attention to where and how they fail. Our NLP submission <a href="#" target="_blank">here</a> in collaboration with MSR India.</p>
+            </div>
+          </div>
+
+          <div class="research-card-full">
+            <div class="card-image">
+              <img src="images/lidar.png" alt="Smartphone LiDAR detecting blood clotting"
+                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
+            </div>
+            <div class="card-body">
+              <div class="card-title">Using Smartphone LIDAR to Detect Clotting From A Single Drop of Blood</div>
+              <p class="card-desc">Created the first contactless system that can detect blood clotting status using the LiDAR sensors on smartphones with no attachments. Ubicomp paper <a href="#" target="_blank">here</a> in collaboration with Shyam Gollakota and Justin Chan.</p>
+            </div>
+          </div>
+
+          <div class="research-card-full">
+            <div class="card-image">
+              <img src="images/mobile_phone.png" alt="Passion fruit on a plate"
+                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
+            </div>
+            <div class="card-body">
+              <div class="card-title">Charting the Landscape of Mobile Phone Use by Rural Tanzanian Farmers</div>
+              <p class="card-desc">Surveyed 1014 agricultural households in rural Tanzania to quantify mobile technology access, use, and comfort in this marginalized population. CHI '24 publication <a href="#" target="_blank">here</a> in collaboration with Cornell Economics &amp; IRDP.</p>
+            </div>
+          </div>
+
+          <div class="research-card-full">
+            <div class="card-image">
+              <img src="images/ekichabi.png" alt="Banana trees and sunflower in Tanzania"
                    onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
             </div>
             <div class="card-body">
@@ -204,7 +269,7 @@
 
           <div class="research-card-full">
             <div class="card-image">
-              <img src="images/intermediaries.png" alt="Scaling digital public goods"
+              <img src="images/intermediaries.png" alt="Mama Wawili Cafe storefront in Tanzania"
                    onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
             </div>
             <div class="card-body">
@@ -215,67 +280,12 @@
 
           <div class="research-card-full">
             <div class="card-image">
-              <img src="images/smartphone_supported_ent.png" alt="Smartphone entrepreneurship"
+              <img src="images/smartphone_supported_ent.png" alt="Open landscape with cloudy sky in Tanzania"
                    onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
             </div>
             <div class="card-body">
               <div class="card-title">Understanding Smartphone Supported Entrepreneurship in Periurban Tanzania</div>
               <p class="card-desc">Ran focus groups with 49 smartphone-supported entrepreneurs in periurban Tanzania to understand how they started and grew new businesses with the help of their smartphones. CHI '22 publication <a href="https://dl.acm.org/doi/pdf/10.1145/3544548.3580647" target="_blank" rel="noopener">here</a>.</p>
-            </div>
-          </div>
-
-          <div class="research-card-full">
-            <div class="card-image">
-              <img src="images/lidar.png" alt="Blood clotting detection"
-                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
-            </div>
-            <div class="card-body">
-              <div class="card-title">Smartphone-Based Blood Clotting Detection</div>
-              <p class="card-desc">The first contactless system that determines fluid properties using LiDAR sensors on a modern smartphone. Analyzes laser speckle patterns via Brownian motion to assess blood coagulation — no additional hardware required. UbiComp '22.</p>
-            </div>
-          </div>
-
-          <div class="research-card-full">
-            <div class="card-image">
-              <img src="images/afib.png" alt="Atrial fibrillation detection"
-                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
-            </div>
-            <div class="card-body">
-              <div class="card-title">AI-Powered Atrial Fibrillation Detection for Community Health Workers</div>
-              <p class="card-desc">Uses portable 6-lead ECGs with AI models to predict atrial fibrillation within a 60-day window — aligning with CHW visit schedules and surpassing typical cardiologist diagnostic capability. Cardiovascular Digital Health '23.</p>
-            </div>
-          </div>
-
-          <div class="research-card-full">
-            <div class="card-image">
-              <img src="images/nepal.png" alt="mHealth integration"
-                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
-            </div>
-            <div class="card-body">
-              <div class="card-title">Integrating mHealth &amp; AI Tools into Country Health Systems</div>
-              <p class="card-desc">Assesses alignment between government health system visions for AI tools and practical implementation realities in LMICs, developing a framework to evaluate feasibility and human impact. Forthcoming.</p>
-            </div>
-          </div>
-
-          <div class="research-card-full">
-            <div class="card-image">
-              <img src="images/chatbot.png" alt="Chatbot prescribing preferences"
-                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
-            </div>
-            <div class="card-body">
-              <div class="card-title">Chatbot Medication Prescribing Preferences</div>
-              <p class="card-desc">Examines shifting patient preferences away from overprescribing chatbots through nudging interventions. Phase 1: 54% of participants preferred the overprescribing bot. Phase 2: demonstrated preference shifts toward clinically-validated responses. Under submission.</p>
-            </div>
-          </div>
-
-          <div class="research-card-full">
-            <div class="card-image">
-              <img src="images/llm.png" alt="LLM in Indic languages"
-                   onerror="this.parentElement.innerHTML='<div class=&quot;card-image-placeholder&quot;>No image</div>'" />
-            </div>
-            <div class="card-body">
-              <div class="card-title">LLM Performance in Indic Languages</div>
-              <p class="card-desc">Investigates how various large language models handle health information queries in Indic languages and Indic English, focusing on failure points and evaluation strategies. In progress.</p>
             </div>
           </div>
 
@@ -285,33 +295,40 @@
     </div>
 
     <div class="wave-divider">
-      <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,20 C240,40 480,0 720,20 C960,40 1200,0 1440,20"
-              fill="none" stroke="#7B2A18" stroke-width="2.5"/>
+      <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path class="wave-fill" d="M0,40.0 L10,37.9 L20,35.8 L30,33.8 L40,31.8 L50,29.9 L60,28.0 L70,26.2 L80,24.6 L90,23.0 L100,21.6 L110,20.3 L120,19.2 L130,18.2 L140,17.4 L150,16.8 L160,16.4 L170,16.1 L180,16.0 L190,16.1 L200,16.4 L210,16.8 L220,17.4 L230,18.2 L240,19.2 L250,20.3 L260,21.6 L270,23.0 L280,24.6 L290,26.2 L300,28.0 L310,29.9 L320,31.8 L330,33.8 L340,35.8 L350,37.9 L360,40.0 L370,42.1 L380,44.2 L390,46.2 L400,48.2 L410,50.1 L420,52.0 L430,53.8 L440,55.4 L450,57.0 L460,58.4 L470,59.7 L480,60.8 L490,61.8 L500,62.6 L510,63.2 L520,63.6 L530,63.9 L540,64.0 L550,63.9 L560,63.6 L570,63.2 L580,62.6 L590,61.8 L600,60.8 L610,59.7 L620,58.4 L630,57.0 L640,55.4 L650,53.8 L660,52.0 L670,50.1 L680,48.2 L690,46.2 L700,44.2 L710,42.1 L720,40.0 L730,37.9 L740,35.8 L750,33.8 L760,31.8 L770,29.9 L780,28.0 L790,26.2 L800,24.6 L810,23.0 L820,21.6 L830,20.3 L840,19.2 L850,18.2 L860,17.4 L870,16.8 L880,16.4 L890,16.1 L900,16.0 L910,16.1 L920,16.4 L930,16.8 L940,17.4 L950,18.2 L960,19.2 L970,20.3 L980,21.6 L990,23.0 L1000,24.6 L1010,26.2 L1020,28.0 L1030,29.9 L1040,31.8 L1050,33.8 L1060,35.8 L1070,37.9 L1080,40.0 L1090,42.1 L1100,44.2 L1110,46.2 L1120,48.2 L1130,50.1 L1140,52.0 L1150,53.8 L1160,55.4 L1170,57.0 L1180,58.4 L1190,59.7 L1200,60.8 L1210,61.8 L1220,62.6 L1230,63.2 L1240,63.6 L1250,63.9 L1260,64.0 L1270,63.9 L1280,63.6 L1290,63.2 L1300,62.6 L1310,61.8 L1320,60.8 L1330,59.7 L1340,58.4 L1350,57.0 L1360,55.4 L1370,53.8 L1380,52.0 L1390,50.1 L1400,48.2 L1410,46.2 L1420,44.2 L1430,42.1 L1440,40.0 L1440,80 L0,80 Z" />
+        <path class="wave-line" d="M0,40.0 L10,37.9 L20,35.8 L30,33.8 L40,31.8 L50,29.9 L60,28.0 L70,26.2 L80,24.6 L90,23.0 L100,21.6 L110,20.3 L120,19.2 L130,18.2 L140,17.4 L150,16.8 L160,16.4 L170,16.1 L180,16.0 L190,16.1 L200,16.4 L210,16.8 L220,17.4 L230,18.2 L240,19.2 L250,20.3 L260,21.6 L270,23.0 L280,24.6 L290,26.2 L300,28.0 L310,29.9 L320,31.8 L330,33.8 L340,35.8 L350,37.9 L360,40.0 L370,42.1 L380,44.2 L390,46.2 L400,48.2 L410,50.1 L420,52.0 L430,53.8 L440,55.4 L450,57.0 L460,58.4 L470,59.7 L480,60.8 L490,61.8 L500,62.6 L510,63.2 L520,63.6 L530,63.9 L540,64.0 L550,63.9 L560,63.6 L570,63.2 L580,62.6 L590,61.8 L600,60.8 L610,59.7 L620,58.4 L630,57.0 L640,55.4 L650,53.8 L660,52.0 L670,50.1 L680,48.2 L690,46.2 L700,44.2 L710,42.1 L720,40.0 L730,37.9 L740,35.8 L750,33.8 L760,31.8 L770,29.9 L780,28.0 L790,26.2 L800,24.6 L810,23.0 L820,21.6 L830,20.3 L840,19.2 L850,18.2 L860,17.4 L870,16.8 L880,16.4 L890,16.1 L900,16.0 L910,16.1 L920,16.4 L930,16.8 L940,17.4 L950,18.2 L960,19.2 L970,20.3 L980,21.6 L990,23.0 L1000,24.6 L1010,26.2 L1020,28.0 L1030,29.9 L1040,31.8 L1050,33.8 L1060,35.8 L1070,37.9 L1080,40.0 L1090,42.1 L1100,44.2 L1110,46.2 L1120,48.2 L1130,50.1 L1140,52.0 L1150,53.8 L1160,55.4 L1170,57.0 L1180,58.4 L1190,59.7 L1200,60.8 L1210,61.8 L1220,62.6 L1230,63.2 L1240,63.6 L1250,63.9 L1260,64.0 L1270,63.9 L1280,63.6 L1290,63.2 L1300,62.6 L1310,61.8 L1320,60.8 L1330,59.7 L1340,58.4 L1350,57.0 L1360,55.4 L1370,53.8 L1380,52.0 L1390,50.1 L1400,48.2 L1410,46.2 L1420,44.2 L1430,42.1 L1440,40.0" />
       </svg>
     </div>
   </main>
 
   <script>
     const track = document.getElementById('track');
-    const GAP = 18;
-    const CARD_W = 340;
-    let current = 0;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const STEP = 340 + 18;          // card width + gap
+    const SIDE_PAD = 56;            // wrapper horizontal padding (per side)
+    let offset = 0;
 
-    function visibleCount() {
-      return Math.floor(track.parentElement.offsetWidth / (CARD_W + GAP));
+    function maxOffset() {
+      const visible = track.parentElement.clientWidth - SIDE_PAD * 2;
+      return Math.max(0, track.scrollWidth - visible);
+    }
+
+    function apply() {
+      offset = Math.max(0, Math.min(offset, maxOffset()));
+      track.style.transform = `translateX(-${offset}px)`;
+      prevBtn.disabled = offset <= 0;
+      nextBtn.disabled = offset >= maxOffset() - 1;
     }
 
     function slide(dir) {
-      const total = track.children.length;
-      const vis = visibleCount();
-      current = Math.max(0, Math.min(current + dir, total - vis));
-      track.style.transform = `translateX(-${current * (CARD_W + GAP)}px)`;
-      document.getElementById('prevBtn').disabled = current === 0;
-      document.getElementById('nextBtn').disabled = current >= total - vis;
+      offset += dir * STEP;
+      apply();
     }
 
-    document.getElementById('prevBtn').disabled = true;
+    window.addEventListener('resize', apply);
+    apply();
   </script>
 
 </body>

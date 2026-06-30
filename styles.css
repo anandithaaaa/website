@@ -147,10 +147,6 @@ nav {
 
 /* ── WORK EXPERIENCE ── */
 .work-page-body {
-  background: #ffffff;
-}
-
-.work-page-body nav {
   background: var(--bg);
 }
 
@@ -159,7 +155,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 16px 60px 20px;
-  background: #ffffff;
+  background: var(--bg);
   overflow: hidden;
 }
 
@@ -172,12 +168,13 @@ nav {
 }
 
 .work-logo {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  object-fit: cover;
+  height: 70px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  border-radius: 10px;
 }
 
 .work-logo-placeholder {
